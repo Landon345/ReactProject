@@ -8,16 +8,16 @@ class Info extends Component {
     
     render() { 
 
-    const {turn, noDeal, totalWinnings} = this.props;
+    const {caseNumberOfCaseJustClicked, amountOfCaseJustClicked, turn, noDeal, totalWinnings, myCase, bankOffer} = this.props;
 
 
         return ( 
         <div>
             <h1>directions: {this.getInfo(turn, noDeal)}</h1>
             <div>{this.getButtons(turn, noDeal)}</div>
-            <h1>Info: </h1>
-            <h1>Your Case number is: {this.props.myCase}</h1>
-            <h1>The Bank's offer is: {this.props.bankOffer}</h1>
+    <h1>{this.getCaseJustClicked(caseNumberOfCaseJustClicked, amountOfCaseJustClicked, turn)}</h1>
+            <h1>Your Case number is: {myCase}</h1>
+            <h1>The Bank's offer is: {bankOffer}</h1>
             <h1>Your total winnings is: ${totalWinnings}</h1>
         </div> );
     }
@@ -65,7 +65,13 @@ class Info extends Component {
         if(noDeal){
             return <React.Fragment></React.Fragment>;
         }
-        if(this.ask(turn)){
+        if(this.ask(turn) && turn === 26){
+            return(
+                <div>
+                <button onClick = {() => this.props.handleDeal(this.props)}>Deal</button>
+                </div>
+                );
+        }else if(this.ask(turn)){
             return (
             <div>
             <button onClick = {() => this.props.handleDeal(this.props)}>Deal</button>
@@ -84,6 +90,21 @@ class Info extends Component {
         }else{
             return false;
         }
+    }
+
+    getCaseJustClicked(caseNumber, amountInCase, turn){
+        if(turn === 1){
+            return (<div>
+                You can not know what is in your case.
+            </div>);
+        }else if(turn === 0){
+            return <React.Fragment></React.Fragment>;
+        }else{
+            return (<div>
+                Amount in case {caseNumber} is {amountInCase}.
+            </div>);
+        }
+        
     }
 }
  

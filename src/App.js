@@ -16,7 +16,9 @@ class App extends Component {
     noDeal: false,
     ask: false,
     bankOffer: 0,
-    totalWinnings: 0
+    totalWinnings: 0,
+    amountOfCaseJustClicked: 0,
+    caseNumberOfCaseJustClicked: 0
   };
 
   handleStart = () => {
@@ -55,30 +57,44 @@ class App extends Component {
       ],
       noDeal: false,
       ask: false,
-      bankOffer: 0
+      bankOffer: 0,
+      amountOfCaseJustClicked: 0,
+      caseNumberOfCaseJustClicked: 0,
     });
   };
 
   handleDelete = x => {
 
-
+    
     let amountsAvail;
     if (turnNumberHolder === 0) {
       amountsAvail = this.state.amountsAvailable;
+      firstCase = x.caseNumber;
     }else{
       amountsAvail = this.state.amountsAvailable.filter(
         c => c !== x.amountEnclosed
       );
+      
     }
     const cases = this.state.cases.filter(c => c.id !== x.caseNumber);
+    
+    console.log(amountsAvail);
     this.setState({
       cases,
       amountsAvailable: amountsAvail,
+      amountOfCaseJustClicked: x.amountEnclosed,
+      caseNumberOfCaseJustClicked: x.caseNumber
     });
     
 
-    this.getFirstCase(x);
+    
+    this.doBankOffer(amountsAvail);
+
+    
+  };
+  doBankOffer = x => {
     let bankOffer;
+    
     turnNumberHolder++;
     if (
       turnNumberHolder === 6 ||
@@ -93,25 +109,18 @@ class App extends Component {
       turnNumberHolder === 26
     ) {
       this.handleAsk();
-      bankOffer = this.getBankOffer();
+      bankOffer = this.getBankOffer(x);
     }
-
-    console.log(turnNumberHolder);
+    
+    
 
     this.setState({
       noDeal: false,
       bankOffer
     });
+  }
 
-    
-  };
-
-  getFirstCase = x => {
-    if (turnNumberHolder === 0) {
-      let myCase = this.state.cases.filter(c => c.id === x.caseNumber);
-      firstCase = myCase[0].id;
-    }
-  };
+  
 
   handleNoDeal = () => {
     this.handleAsk();
@@ -120,15 +129,15 @@ class App extends Component {
     });
   };
 
-  getBankOffer = () => {
+  getBankOffer = (x) => {
     let total = 0;
     let average = 0;
-    
-    for (let i = 0; i < this.state.amountsAvailable.length; i++) {
-      total += this.state.amountsAvailable[i];
+    console.log(x);
+    for (let i = 0; i < x.length; i++) {
+      total += x[i];
     }
 
-    average = total / this.state.amountsAvailable.length;
+    average = total / x.length;
     return average.toFixed(0);
   };
 
@@ -220,6 +229,8 @@ class App extends Component {
               amountsAvailable={this.state.amountsAvailable}
               handleDeal={this.handleDeal}
               totalWinnings={this.state.totalWinnings}
+              amountOfCaseJustClicked = {this.state.amountOfCaseJustClicked}
+              caseNumberOfCaseJustClicked = {this.state.caseNumberOfCaseJustClicked}
             />
           </div>
         </section>
