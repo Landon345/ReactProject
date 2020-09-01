@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Deal-or-no-deal-game/static/css/main.f05016c4.chunk.css",
+    "main.js": "/Deal-or-no-deal-game/static/js/main.b5395099.chunk.js",
+    "main.js.map": "/Deal-or-no-deal-game/static/js/main.b5395099.chunk.js.map",
+    "runtime-main.js": "/Deal-or-no-deal-game/static/js/runtime-main.29f64f81.js",
+    "runtime-main.js.map": "/Deal-or-no-deal-game/static/js/runtime-main.29f64f81.js.map",
+    "static/js/2.8914315c.chunk.js": "/Deal-or-no-deal-game/static/js/2.8914315c.chunk.js",
+    "static/js/2.8914315c.chunk.js.map": "/Deal-or-no-deal-game/static/js/2.8914315c.chunk.js.map",
+    "index.html": "/Deal-or-no-deal-game/index.html",
+    "precache-manifest.e16cf0f73bff1640b45e4539e8cd7b96.js": "/Deal-or-no-deal-game/precache-manifest.e16cf0f73bff1640b45e4539e8cd7b96.js",
+    "service-worker.js": "/Deal-or-no-deal-game/service-worker.js",
+    "static/css/main.f05016c4.chunk.css.map": "/Deal-or-no-deal-game/static/css/main.f05016c4.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.29f64f81.js",
+    "static/js/2.8914315c.chunk.js",
+    "static/css/main.f05016c4.chunk.css",
+    "static/js/main.b5395099.chunk.js"
+  ]
+}
