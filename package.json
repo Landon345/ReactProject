@@ -1,13 +1,17 @@
 {
+  "homepage": "http://Landon345.github.io/Deal-or-no-deal-game/",
   "name": "deal-or-no-deal-react-game",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "gh-pages": "^3.1.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
